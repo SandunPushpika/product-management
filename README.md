@@ -64,5 +64,26 @@ Once the application is up and running, you can interact with it using the follo
       "price": 1.0
     }
     ```
+  **Sample Success Response**
+  ```json
+    {
+        "message": "Product added!",
+        "httpStatus": 201,
+        "data": {
+            "id": 1,
+            "name": "book",
+            "price": 55.98,
+            "createdAt": "2024-12-21T15:00:44.276929821"
+        }
+    }
+    ```
+  **Sample Error Response**
+  ```json
+    {
+        "message": "Name cannot be empty!",
+        "httpStatus": 400,
+        "data": null
+    }
+    ```
 
-  ## Thank you
+## Thank you
