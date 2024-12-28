@@ -7,10 +7,9 @@ import com.task.productmanagement.service.product.IProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("api/products")
@@ -29,6 +28,15 @@ public class ProductController {
         ApiResponse response = new ApiResponse("Product added!", 201, model);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED );
+    }
+
+    @GetMapping()
+    public ResponseEntity<ApiResponse> getAllProducts(int pageNumber, int pageSize, String sortBy, int minPrice, int maxPrice) {
+
+        List<ProductModel> models = productService.getProducts(pageNumber,pageSize,sortBy, minPrice, maxPrice);
+        ApiResponse response = new ApiResponse("Success", 200, models);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
